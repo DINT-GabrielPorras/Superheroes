@@ -20,9 +20,56 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Superheroe> listaHeroes;
+        int contador = 0;
         public MainWindow()
         {
             InitializeComponent();
+
+            listaHeroes = Superheroe.GetSamples();
+
+            dockPanelPrincipal.DataContext = listaHeroes.FirstOrDefault();
+        }
+
+        public void FlechaDerecha_MouseLeftButtonDown(Object sender, EventArgs e)
+        {
+            if (contador > 0)
+                contador--;
+
+            dockPanelPrincipal.DataContext = listaHeroes[contador];
+
+            CambiaNumerosYNombre(contador);
+        }
+
+        public void FlechaIzquierda_MouseLeftButtonDown(Object sender, EventArgs e)
+        {
+            if(contador < 2)
+                contador++;
+
+            dockPanelPrincipal.DataContext = listaHeroes[contador];
+
+            CambiaNumerosYNombre(contador);
+        }
+
+        public void CambiaNumerosYNombre(int contador)
+        {
+            if (contador == 0)
+            {
+                numeros.Text = "1/3";
+                Nombre.Text = "Ironman";
+            }
+                
+            if (contador == 1)
+            {
+                numeros.Text = "2/3";
+                Nombre.Text = "Kingpin";
+            }
+                
+            if (contador == 2)
+            {
+                numeros.Text = "3/3";
+                Nombre.Text = "Spiderman";
+            }               
         }
     }
 }

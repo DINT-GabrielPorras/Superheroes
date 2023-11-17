@@ -20,14 +20,14 @@ class Superheroe : INotifyPropertyChanged
         Heroe = heroe;
     }
 
-public event PropertyChangedEventHandler? PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-public void RaisePropertyChanged(string propertyName)
-{
-    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-}
+    public void RaisePropertyChanged(string propertyName)
+    {
+        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
-public static List<Superheroe> GetSamples()
+    public static List<Superheroe> GetSamples()
     {
         List<Superheroe> ejemplos = new List<Superheroe>();
 
